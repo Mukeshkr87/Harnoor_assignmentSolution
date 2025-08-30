@@ -8,7 +8,7 @@
   1.GET /todos - Retrieve all todo items
     Description: Returns a list of all todo items.
     Response: 200 OK with an array of todo items in JSON format.
-    Example: GET http://localhost:3000/todos
+    Example: GET http://localhost: /todos
   2.GET /todos/:id - Retrieve a specific todo item by ID
     Description: Returns a specific todo item identified by its ID.
     Response: 200 OK with the todo item in JSON format if found, or 404 Not Found if not found.
