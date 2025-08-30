@@ -29,4 +29,3 @@ try{
 catch{
     throw new Error("Error occur at file reading")
 }
-    console.log(data);
