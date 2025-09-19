@@ -13,20 +13,25 @@
 </style>
 <body>
     <div>
-        <input type="text" id="Principal" placeholder="Enter Principal Amount"><br><br>
-        <input type="text" id="rate" placeholder="Enter Rate of intrest"><br><br>
-        <input type="text" id="time" placeholder="Time taken"> <br><br>
-        <button type="submit" onclick="getInfo()">Get Info</button>
+        <input type="text" oninput="getInfoThroughDebouncing()" id="Principal" placeholder="Enter Principal Amount"><br><br>
+        <input type="text" oninput="getInfoThroughDebouncing()" id="rate" placeholder="Enter Rate of intrest"><br><br>
+        <input type="text" oninput="getInfoThroughDebouncing()" id="time" placeholder="Time taken"> <br><br>
+        <!-- <button type="submit" onclick="getInfo()">Get Info</button> -->
     </div>
     <div id="getAns"></div>
     <script>
+        let time;
+        function getInfoThroughDebouncing(){
+            clearTimeout(time);
+            time = setTimeout(getInfo,2000);//For 2 second
+        }
         const getInfo =  async()=>{
             const p = parseInt(document.getElementById('Principal').value);
             const r = parseInt(document.getElementById('rate').value);
             const t = parseInt(document.getElementById('time').value);
             const info = await fetch(`http://localhost:3000/calSi?p=${p}&r=${r}&t=${t}`);
-            const data = await info.text();
-            document.getElementById('getAns').innerHTML = data;
+            const data = await info.json();
+            document.getElementById('getAns').innerHTML = `Intrest: ${data.Intrest} Amount: ${data.amount}`;
         }
     </script>
 </body>

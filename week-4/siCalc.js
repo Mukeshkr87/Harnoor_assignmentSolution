@@ -9,12 +9,12 @@ app.get('/calSi',(req,res)=>{
         const time = parseInt(req.query.t);
         const ia = principal*rate*time;
         const amount = principal+ia;
-        res.status(201).json({
+        res.status(200).json({
             Intrest:ia,
             amount:amount
         })
     }catch(err){
-        return res.err;
+        res.status(500).send(err.message);
     }
 
 })
