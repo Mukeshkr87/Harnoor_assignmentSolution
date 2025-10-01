@@ -12,7 +12,17 @@ export const Assignment3 = () => {
     ]);
 
     // Your code starts here
-    const totalValue = 0;
+    // const totalValue = 0;
+    var val = 0;
+    items.map((e)=>(
+        val += e.value
+    ))
+    // const totalValue = val;
+    const totalValue = useMemo(()=>{
+        let totalValue = 0;
+        items.map((e)=>(totalValue+=e.value))
+        return totalValue
+    },[items])
     // Your code ends here
     return (
         <div>
